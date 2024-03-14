@@ -1,0 +1,14 @@
+- hosts: all
+  become: true
+  tasks:
+    - name: Installation of GIT
+      ansible.builtin.yum:
+        name: httpd
+        state: present
+      when: ansible_os_family== "RedHat"
+
+    - name: installation of Jenkins
+      ansible.builtin.apt:
+        name: apache2 
+        state: present
+      when: ansible_os_family== "Debian"
